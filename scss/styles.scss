@@ -1,0 +1,259 @@
+@use 'variables';
+@use 'mixin';
+
+
+body{
+    //background-color: aqua;
+    font-family: variables.$Body-font;
+    color: variables.$Very-Dark-Cyan;
+    
+}
+
+.main-container{
+    //border: 1px solid red;
+    width: 375px;
+    margin: 0 auto 25px;
+    @include mixin.desktop-view(1440px);
+}
+
+.navbar{
+    border: 10px black;    
+    display: flex;
+    justify-content: space-between;
+    margin: 25px auto 100px;
+    @include mixin.desktop-view(1300px);
+
+    &__logo{
+        width: 95px;
+        height: 16px;
+        @include mixin.desktop-view(240px, 38px);
+    }
+    &__button{
+        @include mixin.button(variables.$White, variables.$Light-Pink,
+        variables.$Pink, 80px, 24px, false);
+        @include mixin.desktop-view(134px, 62px);
+        @include mixin.button-hover(variables.$Pink);
+    }
+}
+
+.header{
+    &__title{
+        font-family: variables.$Headings-font;
+        text-align: center;
+        width: 265px;
+        font-size: 1.48em;
+        margin: 0 auto 36px;
+        @include mixin.desktop-view(1100px, unset, 2.98em);
+    }
+    
+    &__description{
+        text-align: center;
+        margin: 0 auto 49px;
+        font-weight: 100px;
+        font-size: 0.8em;
+        width: 290px;
+        @include mixin.desktop-view(590px, 80px, 1.25em);
+    }
+
+    &__botton{
+        @include mixin.button(variables.$Pink, unset,
+        variables.$Very-Pale-Blue, 100px, 40px, true);
+        @include mixin.desktop-view(400px, 80px, 1.25em);
+        @include mixin.button-hover(variables.$Light-Pink);
+        text-align: center;
+    }
+
+    &__screen-mockups{
+        width: 300px;
+        margin: 0 auto 138px;
+        display: block;
+        @include mixin.desktop-view(1020px, 725px);
+    }
+}
+
+.section-stats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .comunities{
+       @include mixin.stats(32px);
+       @include mixin.stats-dekstop(50);
+    }
+
+    .message{
+        @include mixin.stats(24px){
+            width: 29px;
+            margin: auto;
+        }
+        @include mixin.stats-dekstop(42);
+    }
+
+    @include mixin.sections-stats-dekstop;
+    @include mixin.banner('', '../images/bg-section-top-mobile-1.svg');
+    @include mixin.banner-desktop('', '../images/bg-section-top-desktop-1.svg');
+}
+
+.section-grow-together{
+    background-color: variables.$Very-Pale-Blue;
+    @include mixin.flexSections;
+    @include mixin.felxSection-dekstop;
+}
+
+.section-flowing-conversations{
+    @include mixin.flexSections;
+    @include mixin.felxSection-dekstop(row-reverse);
+    @include mixin.banner('../images/bg-section-bottom-mobile-1.svg', '../images/bg-section-top-mobile-2.svg');
+    @include mixin.banner-desktop('../images/bg-section-bottom-desktop-1.svg', '../images/bg-section-top-desktop-2.svg');
+}
+
+.section-your-users{
+    background-color: variables.$Very-Pale-Blue;
+    @include mixin.flexSections;
+    @include mixin.felxSection-dekstop;
+}
+
+.section-your-comunity{
+    height: 400px;
+    padding-top: 250px;
+    @include mixin.banner('../images/bg-section-bottom-mobile-2.svg', '../images/bg-footer-top-mobile.svg');
+    @include mixin.banner-desktop('../images/bg-section-bottom-desktop-2.svg', '../images/bg-footer-top-desktop.svg');
+    &__title{
+        margin-top: 0px;
+        
+        @extend .header__title;
+    }
+    &__button{
+        @extend .header__botton;
+    }
+}
+@media (min-width: 1440px) {
+    .section-your-comunity{
+        height: 600px;
+    }
+}
+.newsletter{
+    background-color: variables.$Very-Dark-Cyan;
+    color: variables.$Very-Pale-Blue;
+    padding: 70px 24px 40px;
+
+}
+@media (min-width: 1440px) {
+    .newsletter{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+    }
+}
+
+.newsletter-subscription{
+    margin-bottom: 100px;
+    &__title{
+        text-transform: uppercase;
+        font-size: 1.2em;
+        margin-bottom: 28px;
+    }
+    &__desciption{
+        font-size: 0.95em;
+        margin-bottom: 28px;
+    }
+    &__input{
+        width: 100%;
+        height: 50px;
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 16px;
+    }
+
+    &__submit-container{
+        display: flex;
+        justify-content: end;
+    }
+
+    &__submit{
+        @include mixin.button(variables.$Pink, unset,
+        variables.$Very-Pale-Blue, 100px, 40px, false);
+        border-radius: 8px;
+        text-align: center;
+
+        @include mixin.desktop-view(400px, 80px, 1.25em);
+        @include mixin.button-hover(variables.$Light-Pink);
+        text-align: center;
+     }
+}
+
+@media (min-width: 1440px) {
+    .newsletter-subscription{
+        display: flex;
+        width: 500px;
+        height: 238px;
+        &__title{
+            
+            font-size: 1.6em;
+        }
+        &__desciption{
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        &__input{
+            width: 90%;
+        }
+        &__submit{
+            width: 160px;
+            height: 50px;
+         }
+        &__submit-container{
+            align-items: flex-end;
+        }
+    }
+}
+
+.newsletter-contact{
+    &newsletter-contact{
+        width: 204px;
+        margin-bottom: 18px;
+    }
+    &__description{
+        font-size: 0.95;
+        margin-bottom: 28px;
+    }
+    &__phone-container{
+        margin-bottom: 15px;
+    }
+    &__email-container{
+        margin-bottom: 50px;
+    }
+    &__anchor{
+        text-decoration: none;
+        color: variables.$Very-Pale-Blue;
+        margin-left: 20px;
+    }
+
+    &__social-container{
+        width: 110px;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1440px) {
+    .newsletter-contact{
+        &__logo-huddle{
+            width: 250px;
+        }
+        &__description{
+            font-size: 1.1em;
+            width: 370px;
+        }
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
